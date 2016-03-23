@@ -1,0 +1,102 @@
+.logo{
+	position:absolute;
+	left: 50px;
+	top: 50px;
+}
+
+#cvijet{
+	width: 100px; 
+	height: 100px;
+	background-color: black;
+	border-radius: 50px;
+	position: absolute;
+}
+
+#sredina{
+	width: 50px; 
+	height: 50px;
+	background-color: white;
+	border-radius: 25px;
+	position: absolute;
+	top: 29px;
+	left: 29px;
+	z-index: 1;
+}
+
+#latica1{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	left: -6px;
+}
+
+#latica2{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	left: 64px;
+}
+
+#latica3{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	left: -6px;
+	top:56px;
+	overflow:hidden;
+}
+
+#latica4{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	left: 64px;
+	top:56px;
+}
+
+#latica5{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	left: 28px;
+	top: -11px;
+}
+
+#latica6{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	left: 30px;
+	top: 72px;
+}
+#latica7{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	top: 29px;
+	left: -10px;
+}
+
+#latica8{
+	width: 50px; 
+	height: 50px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	left: 69px;
+	top: 29px;
+}

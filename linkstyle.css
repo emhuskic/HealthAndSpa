@@ -1,0 +1,174 @@
+.logo{
+	position:absolute;
+	left: 10px;
+	top: 10px;
+}
+
+#cvijet{
+	width: 25px; 
+	height: 25px;
+	background-color: #8F7752;
+	border-radius: 12.5px;
+	position: absolute;
+}
+
+#sredina{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color: #3C2C27;
+	border-radius: 6.25px;
+	position: absolute;
+	top: 7.25px;
+	left: 7.25px;
+	z-index: 1;
+}
+
+#latica1{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color: #8F7752;
+	border-radius: 6.25px;
+	position: absolute;
+	left: -1.5px;
+}
+
+#latica2{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color: #8F7752;
+	border-radius: 6.25px;
+	position: absolute;
+	left: 16px;
+}
+
+#latica3{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color: #8F7752;
+	border-radius: 6.25px;
+	position: absolute;
+	left: -1.5px;
+  top:14px;
+	overflow:hidden;
+}
+
+#latica4{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color: #8F7752;
+	border-radius: 6.25px;
+	position: absolute;
+	left: 16px;
+	top:14px;
+}
+
+#latica5{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color:#7D6741;
+	border-radius: 6.25px;
+	position: absolute;
+	left: 7px;
+	top: -2.75px;
+}
+
+#latica6{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color:#7D6741;
+	border-radius: 6.25px;
+	position: absolute;
+	left: 7.5px;
+	top: 18px;
+}
+#latica7{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color:#7D6741;
+	border-radius: 6.25px;
+	position: absolute;
+	top: 7.25px;
+	left: -2.5px;
+}
+
+#latica8{
+	width: 12.5px; 
+	height: 12.5px;
+	background-color:#7D6741;
+	border-radius: 6.25px;
+	position: absolute;
+	left:17.25px;
+	top: 7.25px;
+}
+
+
+.navbar {
+  position: relative;
+  z-index: 1000;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  top: 0;
+  width: 100%;
+}
+.links {
+  list-style:none;
+}
+
+.links li:hover {
+  list-style-image: url('https://s-media-cache-ak0.pinimg.com/favicons/2bebe7b1cf8f7fb2d973289444c4806b38ea8950827b138b8d1b891f.png?a5e0dea1a7ef535a350ede868fcda391');
+  color: lightgray;
+}
+
+.navbar li {
+  float: left;
+}
+a {
+    color: white;
+}
+a:visited{
+  color:white;
+}
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+  color:green;
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: none;
+}
+.navbar>li a {
+  display: block;
+  color: #B0997D;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+
+.tekst:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+body {
+  background: url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg) no-repeat;
+  background-size: cover;
+
+  height: 100%;
+}
