@@ -100,8 +100,11 @@
 	left:17.25px;
 	top: 7.25px;
 }
+* {
+    box-sizing: border-box;
+}
 ul {
-  position: relative;
+  position:fixed;
   z-index: 1000;
   list-style-type: none;
   margin: 0;
@@ -109,7 +112,9 @@ ul {
   overflow: hidden;
   background-color: #333;
   top: 0;
+    left:0;
   width: 100%;
+    font-size:13px;
 }
 .imageblur{
   background-image:url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg);
@@ -147,8 +152,11 @@ li a {
 /* Change the link color to #111 (black) on hover */
 
 .tekst:hover {
-  background-color: #111;
+  
+    color:#DCC8BA;
+
 }
+
 
 .active {
   background-color: #4CAF50;
@@ -156,6 +164,8 @@ li a {
 
 body {
   text-align: center;
+    font-family:'Roboto';
+    margin-top:80px;
 }
 
 html {
@@ -171,7 +181,7 @@ html {
 }
 
 #form-main {
-  width: 100%;
+  width: 50%;
   text-align: center;
   margin:auto;
 }
@@ -180,29 +190,26 @@ html {
   background-color: rgba(72, 72, 72, 0.5);
   padding-left: 5%;
   padding-right:  5%;
-  padding-top:  5%;
-  padding-bottom: 8%;
+  padding-top:  2%;
+  padding-bottom: 5%;
   text-align: center;
- margin:auto;
+ margin:auto; 
+    width:70%;
   margin-top:5%;
-  width:50%;
-
+ 
 }
 
 .feedback-input {
   color: #3c3c3c;
  font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 0;
   line-height: 22px;
   background-color: #fbfbfb;
- margin-bottom: 10px;
+ margin-bottom: 5px;
   width:100%;
   border: 3px solid rgba(0, 0, 0, 0);
 }
-
-
-
 
 input:hover,
 textarea:hover,
@@ -212,7 +219,7 @@ textarea:focus {
 }
 
 #button-gray {
-  float: left;
+  float:none;
     width: 100%;
   border: #fbfbfb solid 3px;
   background-color: gray;
@@ -229,18 +236,9 @@ textarea:focus {
 
 #button-gray:hover {
   background-color: rgba(0, 0, 0, 0);
-  
-}
-
-.submit:hover {
-  color: #3498db;
 }
 
 label{
   color:white;
   font-size:18px;
-}
-.submit:hover .ease {
-  width: 100%;
-  background-color: white;
 }

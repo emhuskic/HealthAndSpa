@@ -101,14 +101,14 @@
 	top: 7.25px;
 }
 ul {
-   position: relative;
-   z-index: 1000; 
-    list-style-type: none;
+   position:fixed;
+   list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
     top: 0;
+    left:0;
     width: 100%;
 }
 
@@ -125,7 +125,7 @@ li a {
 }
 
 .tekst:hover {
-    background-color: #111;
+     color:#DCC8BA;
 }
 .active {
     background-color: #4CAF50;
@@ -151,10 +151,13 @@ li a {
 }
 body{
    background:url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg) no-repeat;
- 
+ font-family:'Roboto';
   background-size: cover;
+    font-size:13px;
   height:100%;
    color:white;
+    margin-top:80px;
+    
 }
 caption{
   color:lightgray;

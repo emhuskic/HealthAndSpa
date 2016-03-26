@@ -103,7 +103,7 @@
 
 
 .navbar {
-  position: relative;
+  position: fixed;
   z-index: 1000;
   list-style-type: none;
   margin: 0;
@@ -111,7 +111,9 @@
   overflow: hidden;
   background-color: #333;
   top: 0;
+    left:0;
   width: 100%;
+    font-size:13px;
 }
 .links {
   list-style:none;
@@ -158,8 +160,7 @@ a:active {
 
 /* Change the link color to #111 (black) on hover */
 
-.tekst:hover {
-  background-color: #111;
+.tekst:hover { color:#DCC8BA;
 }
 
 .active {
@@ -169,6 +170,7 @@ a:active {
 body {
   background: url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg) no-repeat;
   background-size: cover;
-
+    font-family:'Roboto';
   height: 100%;
+  margin-top:200px;
 }

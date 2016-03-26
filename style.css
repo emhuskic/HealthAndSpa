@@ -1,4 +1,18 @@
 /* Styles go here */
+
+
+.cover {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+    margin-bottom: 3px;
+  max-height: 500px;
+  max-width: 100%;
+    background-image:url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg);
+}
+
+
 .logo{
 	position:absolute;
 	left: 10px;
@@ -102,12 +116,15 @@
 	top: 7.25px;
 }
 body {
-  background-image:url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg);
+background-color:#543322;
   background-size: cover;
    padding:0px;
    margin:0px;
   background-repeat: repeat-y;
   height: 100%;
+     font-family:  'Roboto';
+    font-weight:100;
+    font-size:13px;
 }
 .imageblur{
   background-image:url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg);
@@ -134,15 +151,14 @@ body {
   color: white;
   font: bold 24px/45px Helvetica, Sans-Serif;
   letter-spacing: -1px;
-  background: rgb(0, 0, 0);
   /* fallback color */
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px;
+  rgba(0,0,0,0.1);
+  padding: 200px;
 }
 
 .newsleft {
   background: rgba(0, 0, 0, 0.4);
-  width: 50%;
+  width: 41%;
   float: left;
   height: 100%;
   color: #B0997D;
@@ -150,15 +166,67 @@ body {
 
 .newsright {
   background: rgba(0, 0, 0, 0.4);
-  float: right;
+float:left;
   height: 100%;
-  width: 50%;
+  width: 41%;
   color: #B0997D;
  
+}
+#headlinearea{
+    width:200px;
+}
+#contentarea{
+    width:200px;
+}
+#imagearea{
+    width:200px;
+}
+label{
+     display: block;
+  color:white;
+  font-size:18px;
+  text-align: center;
+}
+.datelabel{
+    text-align:left;
+    color:#B0997D;
+    font-size:13px;
+    margin-bottom: 0;
+    padding-bottom:0;
+    margin-top:10px;
+}
+#addnewsbutton{
+    
+    width: 100%;
+  border: #fbfbfb solid 3px;
+  background-color: gray;
+  color: white;
+  font-size: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+.addnews {
+    float:right;
+    width:18%;
+    padding:2%;
+}
+
+#addnewsbutton:hover {
+  background-color: rgba(0, 0, 0, 0);
+  
 }
 .post>h3 {
   width: 100%;
   color: #6F5A42;
+    margin-top:0;
+    padding-top:0;
+    padding-bottom:0;
+    margin-bottom:0;
 }
 
 
@@ -173,8 +241,16 @@ body {
   background: #fff;
   left: 0px;
   border: 0.5px;
+     -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
 }
 
+.post:hover img {
+    -webkit-filter: sepia(100%);
+}
 .post {
   display: table-row;
 }
@@ -190,12 +266,13 @@ body {
 
 #smaller {
   width: 100%;
-  color: gray;
+  color: #DCC8BA;
+    font-size:50px;
 }
 
 #larger {
-  font-size: 30px;
-  color: #333;
+  font-size: 100px;
+  color: 	#F8FAF7;
 }
 
 ul {
@@ -223,12 +300,17 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
+span{
+    margin:0;
+}
 
 /* Change the link color to #111 (black) on hover */
-
+.pomlabel{
+    display: none;
+}
 li a.tekst:hover {
-  background-color: #111;
+    color:#DCC8BA;
+
 }
 
 .active {
