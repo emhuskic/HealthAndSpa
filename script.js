@@ -29,8 +29,24 @@ function dropdownChanged() {
         for (i = 0, j = posts.length; i < j; i++) {
             d = new Date(posts[i].getElementsByClassName("pomlabel")[0].innerHTML);
             vrijeme = timeSpan(d);
-            if (vrijeme == 1 || vrijeme == 0)
+             var prviDan =new Date(d.getFullYear(), d.getMonth(), 1).getDay();
+        var sedmica= Math.ceil((d.getDate() + prviDan)/7);
+         var sedmicasad=new Date();
+            var prviDanSad = new Date(sedmicasad.getFullYear(), sedmicasad.getMonth(), 1).getDay();
+            var sedmicasad=Math.ceil((sedmicasad.getDate() + prviDanSad)/7);
+            if(d.getMonth()==3){
+                
+            console.log(d + " " + sedmica);
+            console.log(sedmicasad);}
+             var mjesec=d.getMonth();
+            var mjesecsad=new Date();
+            mjesecsad=mjesecsad.getMonth();
+          /*  if (vrijeme == 1 || vrijeme == 0)
                 posts[i].style.display = 'table-row';
+            else
+                posts[i].style.display = 'none';*/
+            if (sedmica==sedmicasad && mjesec==mjesecsad)
+                  posts[i].style.display = 'table-row';
             else
                 posts[i].style.display = 'none';
         }
@@ -38,10 +54,18 @@ function dropdownChanged() {
         for (i = 0, j = posts.length; i < j; i++) {
             d = new Date(posts[i].getElementsByClassName("pomlabel")[0].innerHTML);
             vrijeme = timeSpan(d);
-            if (vrijeme == 2 || vrijeme == 1 || vrijeme == 0)
+            var mjesec=d.getMonth();
+            var mjesecsad=new Date();
+            mjesecsad=mjesecsad.getMonth();
+           /* if (vrijeme == 2 || vrijeme == 1 || vrijeme == 0)
+                posts[i].style.display = 'table-row';
+            else
+                posts[i].style.display = 'none';*/
+            if (mjesec==mjesecsad)  
                 posts[i].style.display = 'table-row';
             else
                 posts[i].style.display = 'none';
+                
         }
 
     } else {
@@ -53,7 +77,6 @@ function dropdownChanged() {
 
     }
 }
-
 function timeSpan(date) {
     var seconds = Math.floor((new Date() - date) / 1000);
     var interval = Math.floor(seconds / 31536000);
@@ -113,45 +136,45 @@ function timeSince(date) {
     }
     console.log(interval);
     interval = Math.floor(seconds / 86400);
-    if (interval%10 == 1) {
-        return 'Prije ' + interval + " dan";
-    } else if (interval%10 >= 2 && interval%10 < 7) {
-        return 'Prije ' + interval + " dana";
+    if (interval == 1) {
+        return 'Novost objavljena prije ' + interval + " dan";
+    } else if (interval >= 2 && interval < 7) {
+        return 'Novost objavljena prije ' + interval + " dana";
     } else if (interval == 7) {
-        return 'Prije 1 sedmicu';
+        return 'Novost objavljena prije 1 sedmicu';
     } else if (interval > 7 && interval < 14) {
-        return 'Prije 1 sedmicu';
+        return 'Novost objavljena prije 1 sedmicu';
     } else if (interval >= 14 && interval < 21) {
-        return 'Prije 2 sedmice';
+        return 'Novost objavljena prije 2 sedmice';
     } else if (interval >= 22 && interval < 28) {
-        return 'Prije 3 sedmice';
+        return 'Novost objavljena prije 3 sedmice';
     } else if (interval > 0 && interval <= 31) {
-        return 'Prije 4 sedmice';
+        return 'Novost objavljena prije 4 sedmice';
     }
     interval = Math.floor(seconds / 3600);
     if (interval%10 == 1) {
-        return 'Prije ' + interval + " sat";
+        return 'Novost objavljena prije ' + interval + " sat";
     } else if (interval%10 >= 2 && interval%10 <= 4) {
-        return 'Prije ' + interval + " sata";
+        return 'Novost objavljena prije ' + interval + " sata";
     } else if (interval > 4) {
-        return interval + " sati";
+        return 'Novost objavljena prije ' + interval + " sati";
     }
     interval = Math.floor(seconds / 60);
     if (interval%10 == 1) {
-        return 'Prije ' + interval + " minutu";
+        return 'Novost objavljena prije ' + interval + " minutu";
     } else if (interval%10 >= 2 && interval%10 <= 4) {
-        return 'Prije ' + interval + " minute";
+        return 'Novost objavljena prije ' + interval + " minute";
     } else if (interval > 4) {
-        return 'Prije ' + interval + " minuta";
+        return 'Novost objavljena prije ' + interval + " minuta";
     }
 
     interval = Math.floor(seconds);
     if (interval == 1) {
-        return 'Prije ' + interval + " sekundu";
+        return 'Novost objavljena prije ' + interval + " sekundu";
     } else if (interval >= 2 && interval <= 4) {
-        return 'Prije ' + interval + " sekunde";
+        return 'Novost objavljena prije ' + interval + " sekunde";
     } else  {
-       return 'Prije ' + interval + " sekundi";
+       return 'Novost objavljena prije ' + interval + " sekundi";
     }
 }
 

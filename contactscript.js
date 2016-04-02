@@ -1,6 +1,6 @@
 function validateButton(f) {
     var k = document.forms["form1"].getElementsByTagName("input");
-    for (var i = 0; i < k.length - 1; i++) {
+    for (var i = 0; i < k.length-1; i++) {
         validate(k[i]);
     }
 }
@@ -24,25 +24,56 @@ function validate(f) {
         }
         else {f.style.backgroundColor = "white";
               f.setCustomValidity('');}
-
+    
     if (f.id == "comment") {
         var y = document.forms["form1"]["name"].value;
         if (y == null || y == "")
             f.style.backgroundColor = "#EFDBB1";
         else f.style.backgroundColor = "white";
     }
+    
+    if (f.id=="dob"){
+         if (!validateTelephone(f.value)) {
+            f.style.backgroundColor = "#EFDBB1";
+              console.log(f.value);
+            f.addEventListener("blur", verifyDate(f));
+        }
+        else {f.style.backgroundColor = "white";
+              f.setCustomValidity('');}
+    }
 
 
 
 
 }
+function validateDate(input){ 
+      var today =new Date();
+    var inputDate=new Date(input);
+      if (inputDate == ""){
+          return false;
+      } else if (inputDate > today) {
+          return false;
+      }
+    else {
+       
+          return true;
+      }
+  }
 
 function verifyTelephone(input) {
-
-    // the provided value doesn’t match the primary email address
-    // the provided value doesn’t match the primary email address
-   if (!validateTelephone(input))
+   if (!validateTelephone(input.value))
         input.setCustomValidity('Telephone must be in correct format');
+    else {
+        // input is valid -- reset the error message
+        console.log("Dobar format");
+        input.setCustomValidity('');
+    }
+
+}
+
+function verifyDate(input) {
+   if (!validateDate(input.value))
+        input.setCustomValidity('Date must be valid');
     else {
         // input is valid -- reset the error message
         console.log("tu");
@@ -50,7 +81,6 @@ function verifyTelephone(input) {
     }
 
 }
-
 function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
