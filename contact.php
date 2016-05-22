@@ -26,9 +26,9 @@
 			<div id="latica8"></div>
 		</div></a></li>
     <li><a class="tekst" href="index.php">Home page</a>
-    <li><a class="tekst" href="services.html">Services</a>
-    <li><a class="tekst" href="contact.html">Contact</a>
-    <li><a class="tekst" href="links.html">Links</a>
+    <li><a class="tekst" href="services.php">Services</a>
+    <li><a class="tekst" href="contact.php">Contact</a>
+    <li><a class="tekst" href="links.php">Links</a>
   </ul>
   <div id="form-main">
   <div id="form-div">
