@@ -45,6 +45,12 @@
 			$content=strip_tags($_POST["content"]);
 			$telephone=strip_tags($_POST["telephone"]);
 			$country=strip_tags($_POST["country"]);
+                $headline = htmlEntities($headline, ENT_QUOTES);
+				$imagelink = htmlEntities($imagelink, ENT_QUOTES); 
+				$content = htmlEntities($content, ENT_QUOTES); 
+				$country = htmlEntities($country, ENT_QUOTES);
+$telephone = htmlEntities($telephone, ENT_QUOTES);
+                
            $date=date('Y-m-d H:i:s');
            if(!empty($headline) && !empty($imagelink) && !empty($content) && $content!="" && $telephone!="" && $country!=""){
 			file_put_contents("novosti.csv", "\n".$imagelink.','.$date.','.$headline.','.$content, FILE_APPEND);
