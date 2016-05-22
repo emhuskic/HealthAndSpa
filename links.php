@@ -14,7 +14,7 @@
       <div class="imageblur"> </div>
     <!-- Navigacijski meni -->
        <ul class="navbar">
-    <li><a id="cvjetic" href="index.html"><div class="logo">
+    <li><a id="cvjetic" href="index.php"><div class="logo">
 			<div id="cvijet"></div>
 			<div id="sredina"></div>
 			<div id="latica1"></div>
@@ -26,7 +26,7 @@
 			<div id="latica7"></div>
 			<div id="latica8"></div>
 		</div></a></li>
-    <li><a class="tekst" href="index.html">Home page</a>
+    <li><a class="tekst" href="index.php">Home page</a>
     <li><a class="tekst" href="services.html">Services</a>
     <li><a class="tekst" href="contact.html">Contact</a>
     <li><a class="tekst" href="links.html">Links</a>
