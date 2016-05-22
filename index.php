@@ -53,7 +53,8 @@ $telephone = htmlEntities($telephone, ENT_QUOTES);
                 
            $date=date('Y-m-d H:i:s');
            if(!empty($headline) && !empty($imagelink) && !empty($content) && $content!="" && $telephone!="" && $country!=""){
-			file_put_contents("novosti.csv", "\n".$imagelink.','.$date.','.$headline.','.$content, FILE_APPEND);
+                file_put_contents($_ENV['OPENSHIFT_DATA_DIR']."novosti.csv","\n".$imagelink.','.$date.','.$headline.','.$content, FILE_APPEND);
+			
             }
             }
 		}
@@ -70,7 +71,7 @@ $telephone = htmlEntities($telephone, ENT_QUOTES);
             $username= $_POST['username'];
                 
             $passwordHash = hash('md5',$_POST['password'],false);
-            $redovi=file("login.csv");
+            $redovi=file_get_contents($_ENV['OPENSHIFT_DATA_DIR']."login.csv"); 
 		foreach ($redovi as $red){
 			
 			
@@ -152,7 +153,8 @@ echo "<script type='text/javascript'>alert('$message');</script>";
     $niz1=explode(',',$b);
     return (strtolower($niz[2]) < strtolower($niz1[2])) ? -1 : 1;
 }
-        $novosti=file("novosti.csv");
+//$novosti=file("novosti.csv");
+       $novosti= file_get_contents($_ENV['OPENSHIFT_DATA_DIR']."novosti.csv"); 
         if(isset($_POST["sortAbutton"]))        $selectedKey=0;
         else 
            $selectedKey=1;
@@ -191,7 +193,7 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 
                 <?php
          
-           $novostidesno=file("novostidesno.csv");
+           $novostidesno=file_get_contents($_ENV['OPENSHIFT_DATA_DIR']."novostidesno.csv"); 
           if(!isset($_POST["sortAbutton"]))    
        usort($novostidesno, "cmp");
         else
