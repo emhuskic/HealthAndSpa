@@ -9,7 +9,7 @@
     margin-bottom: 3px;
   max-height: 500px;
   max-width: 100%;
-    background-image:url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg);
+    background-image:url(pozadinska.jpg);
 }
 
 
@@ -127,7 +127,7 @@ background-color:#543322;
     font-size:13px;
 }
 .imageblur{
-  background-image:url(http://img2.goodfon.su/original/5616x3744/4/1e/spa-spa-kamni-svechi-cvety-546.jpg);
+  background-image:url(pozadinska.jpg);
     background-size:cover;
     -webkit-filter: blur(13px);
     -moz-filter: blur(13px);
