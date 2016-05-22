@@ -1,3 +1,7 @@
+<?php
+   ob_start();
+   session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +15,30 @@
 </head>
 
 <body>
+       <?php
 
+    header("Location: http://example.com/myOtherPage.php");
+            echo “Greska!”;
+            $msg = '';
+            
+            if (isset($_POST['loginbutton']) && !empty($_POST['username']) 
+               && !empty($_POST['password'])) {
+				
+               if ($_POST['username'] == 'emina' && 
+                  $_POST['password'] == '123') {
+                  $_SESSION['valid'] = true;
+                  $_SESSION['timeout'] = time();
+                  $_SESSION['username'] = 'emina';
+                  
+                  echo 'You have entered valid username and password';
+               }else {
+                  $msg = 'Wrong username or password';
+               }
+            }
+         ?>
+    
+    
+      </div>
     <!-- Navigacijski meni -->
     <ul class="navbar">
         <li>
@@ -145,7 +172,18 @@
             <span>Experience our Minnie Custom Vichy Shower, and enjoy $50 off any 50- or 80-minute facial or hydrotherapy treatment Monday–Thursday until March 31. </span>
         </div>
     </div>
-
+    <div class="addnews">
+        <p class="username">
+            <label for="username">Korisnicko ime:</label>
+            <input name="username" type=text class="username" placeholder="" id="headlinearea" required/>
+        </p>
+          <p class="password">
+            <label for="password">Lozinka:</label>
+            <input name="password" type=password class="password" placeholder="" id="headlinearea" required/>
+        </p>
+             <input type="submit" value="Login" id="loginbutton" name="loginbutton" />
+ 
+    </div>
     <div class="addnews">
         <select id="dropdown" onchange="dropdownChanged()">
             <option value="sve">Sve novosti</option>
