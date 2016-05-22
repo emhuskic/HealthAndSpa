@@ -8,14 +8,15 @@ function img_create(src, alt, title) {
     if (title != null) img.title = title;
     return img;
 }
-
+function dropdownSortChanged(){
+    var x = document.getElementById("dropdownSort").value; //Sort alphabetically, sort by date
+  
+}
 function dropdownChanged() {
     var x = document.getElementById("dropdown").value; //danasnje, sedmicne, mjesecne, sve
     var posts = document.getElementsByClassName("post");
     var d = "";
     var vrijeme = 0;
-
-
     if (x == "danasnje") {
         for (i = 0, j = posts.length; i < j; i++) {
             d = new Date(posts[i].getElementsByClassName("pomlabel")[0].innerHTML);

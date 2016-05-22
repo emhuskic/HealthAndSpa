@@ -15,8 +15,8 @@
     </head>
 
     <body>
-       
-       
+
+
         <?php
     $msg = '';
       $Err='';
@@ -47,7 +47,7 @@
 			$country=strip_tags($_POST["country"]);
            $date=date('Y-m-d H:i:s');
            if(!empty($headline) && !empty($imagelink) && !empty($content) && $content!="" && $telephone!="" && $country!=""){
-			file_put_contents("novosti.csv", "\n".$imagelink.','.$headline.','.$content.','.$date, FILE_APPEND);
+			file_put_contents("novosti.csv", "\n".$imagelink.','.$date.','.$headline.','.$content, FILE_APPEND);
             }
             }
 		}
@@ -134,7 +134,26 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                 </div>
             </div>
             <?php
-           $novosti=file("novosti.csv");
+        function cmp($a, $b)
+{
+    $niz=explode(',',$a);
+    $niz1=explode(',',$b);
+    return (strtolower($niz[1]) < strtolower($niz1[1])) ? -1 : 1;
+}
+         function cmpAlpha($a, $b)
+{
+    $niz=explode(',',$a);
+    $niz1=explode(',',$b);
+    return (strtolower($niz[2]) < strtolower($niz1[2])) ? -1 : 1;
+}
+        $novosti=file("novosti.csv");
+        if(isset($_POST["sortAbutton"]))        $selectedKey=0;
+        else 
+           $selectedKey=1;
+       if($selectedKey==1)
+       usort($novosti, "cmp");
+        else
+            usort($novosti, "cmpAlpha");
 		print "<div id='leftie' class='newsleft'>";
 		foreach ($novosti as $red){
             $brojac=0;
@@ -144,24 +163,33 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 			foreach ($celije as $celija){
                  if($brojac==0) {
                     print "<img class='newsicon' src=$celija alt='Image could not be loaded'>";
-                    print "<label class='datelabel'>May 2, 2016 11:13:00</label>";
+                  
+                }
+                 else if ($brojac==1){
+                      print "<label class='datelabel'>$celija</label>";
                     print "<label class='pomlabel'></label>";
                     
                 }
-                else if($brojac==1) {print "<h3>$celija</h3>"; }
-                else if ($brojac==2){
+                else if($brojac==2) {print "<h3>$celija</h3>"; }
+                else if ($brojac==3){
                     print "<span>$celija<span>";
                 
                 }
+               
                    $brojac++;
 			}
 			print "</div>";
 		}
         print "</div>";
         ?>
+
+                <?php
          
-        <?php
-          $novostidesno=file("novostidesno.csv");
+           $novostidesno=file("novostidesno.csv");
+          if(!isset($_POST["sortAbutton"]))    
+       usort($novostidesno, "cmp");
+        else
+            usort($novostidesno,"cmpAlpha");
 		print "<div class=\"newsright\">";
 		foreach ($novostidesno as $red){
             $brojac=0;
@@ -170,26 +198,29 @@ echo "<script type='text/javascript'>alert('$message');</script>";
             $brojac=0;
 			foreach ($celije as $celija){
                  if($brojac==0) {
-                    print "<img class=\"newsicon\" src=$celija alt='Image could not be loaded'>";
+                    print "<img class='newsicon' src=$celija alt='Image could not be loaded'>";
                   
-                    print "<label class='datelabel'>May 2, 2016 11:13:00</label>";
+                }
+                 else if ($brojac==1){
+                      print "<label class='datelabel'>$celija</label>";
                     print "<label class='pomlabel'></label>";
                     
                 }
-                else if($brojac==1) {print "<h3>$celija</h3>"; }
-                else if ($brojac==2){
+                else if($brojac==2) {print "<h3>$celija</h3>"; }
+                else if ($brojac==3){
                     print "<span>$celija<span>";
                 
                 }
+               
                    $brojac++;
 			}
 			print "</div>";
 		}
         print "</div>";
         ?>
-         
-            <div class="addnews">
-                <?php
+
+                    <div class="addnews">
+                        <?php
         if(!isset($_SESSION['loggedIn'])){
             print("
          <form class='loginforma' method='post'>
@@ -239,18 +270,25 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                           <input name='telephone' type=text class='telephone' id='telephone'  onchange='validateAJAX();'/>
                   
                     </p>
-                    <input type='submit' onclick='addElement();' name='addnewsbutton' value='ADD NEWS' id='addnewsbutton' /> </form><br><br>");
+                    <input type='submit' onclick='addElement();' name='addnewsbutton' value='ADD NEWS' id='addnewsbutton' /> 
+                    <br> <br>
+                    <input type='submit' name='sortAbutton' value='SORT ALPHABETICALLY' id='sortAbutton'/>
+                     <input type='submit' name='sortDbutton' value='SORT BY DATE' id='sortDbutton'/>
+                    
+                         
+                    </form><br><br>"
+                    );
         }
         ?>
-                    <select id="dropdown" onchange="dropdownChanged()">
-                        <option value="sve">Sve novosti</option>
-                        <option value="danasnje">Danasnje novosti</option>
-                        <option value="sedmicne">Novosti ove sedmice</option>
-                        <option value="mjesecne">Novosti ovog mjeseca</option>
-                    </select>
+                            <select id="dropdown" onchange="dropdownChanged()">
+                                <option value="sve">Sve novosti</option>
+                                <option value="danasnje">Danasnje novosti</option>
+                                <option value="sedmicne">Novosti ove sedmice</option>
+                                <option value="mjesecne">Novosti ovog mjeseca</option>
+                            </select>
 
 
-            </div>
+                    </div>
 
     </body>
 

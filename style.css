@@ -172,6 +172,12 @@ float:left;
   color: #B0997D;
  
 }
+#dropdown{
+    width:100%;
+}
+#dropdownSort{
+    width:100%;
+}
 #headlinearea{
     width:100%;
 }
@@ -208,6 +214,37 @@ width: 100%;
   background-color: gray;
   color: white;
   font-size: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+#sortAbutton{
+    
+width: 100%;
+  border: #fbfbfb solid 3px;
+  background-color: gray;
+  color: white;
+  font-size: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+
+#sortDbutton{
+    
+width: 100%;
+  border: #fbfbfb solid 3px;
+  background-color: gray;
+  color: white;
+  font-size: 10px;
   padding-top: 12px;
   padding-bottom: 12px;
   -webkit-transition: all 0.3s;
