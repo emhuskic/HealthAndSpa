@@ -38,7 +38,7 @@
 	     
 	    if (!$novosti) 
 	    {
-	          $greska = $konekcija->errorInfo();
+	          $greska = $conn->errorInfo();
 	          print "SQL greška: " . $greska[2];
 	          exit();
      	}

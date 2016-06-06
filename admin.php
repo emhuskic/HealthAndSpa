@@ -1,37 +1,22 @@
 <?php
    ob_start();
    session_start();
-?>
-<!DOCTYPE html>
-<html>
-
-  <head>
-    <link rel="stylesheet" href="contactstyle.css">
-    <link rel="stylesheet" href="style.css">
-     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
-      
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <script src="contactscript.js"></script>
-    <title> Health&amp;Spa centar<br>Minnie</title>
-  </head>
-
-  <body>
-
-    <?php 
 
 
       $servername = "localhost";
       $dbname = "eminawt";
       $username = "root";
       $password = "";
-	  
-	/*  $servername = "127.6.241.130";
+    
+  /*  $servername = "127.6.241.130";
 $username = "admin61vmZBV";
 $password = "rnu3mlMX-Wz8";
 $dbname = "eminawt";*/
       $konekcija = new mysqli($servername, $username, $password,$dbname);
 
+
        $admin=0;
+       
         if(isset($_SESSION["username"]))
         {
 
@@ -51,6 +36,29 @@ $dbname = "eminawt";*/
         
             }
           }
+
+          if($admin==1){
+?>
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="contactstyle.css">
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
+      
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="contactscript.js"></script>
+    <title> Health&amp;Spa centar<br>Minnie</title>
+  </head>
+
+  <body>
+
+    <?php 
+
+
+
 
          
 
@@ -110,6 +118,15 @@ $dbname = "eminawt";*/
 
 
           }
+
+
+          if(isset($_POST['logoutbutton'])) {
+                   
+                $_SESSION['loggedIn']=false;
+             session_unset();
+                header('Location: index.php');
+              
+               }
 
 
       
@@ -294,3 +311,5 @@ $dbname = "eminawt";*/
   </script>
 
 </html>
+
+<?php } ?>

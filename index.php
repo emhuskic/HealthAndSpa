@@ -17,33 +17,7 @@
 
     <body>
 
-        <script type="text/javascript">
 
-      function dobavi()
-{
-    var ajax = new XMLHttpRequest();
-
-    ajax.onreadystatechange = function () {
-        if (ajax.readyState == 4 && ajax.status == 200)
-        {
-
-          console.log(ajax.responseText);
-
-            //document.getElementById("brojTelefona").innerHTML = pozivniBrojDrzave + "/";
-        }
-            
-        if (ajax.readyState == 4 && ajax.status == 404)
-            alert("GREŠKA!!! Molimo pokušajte kasnije.");
-            
-    }
-    ajax.open("GET", "restServis.php?username=kerim&brojObavijesti=2", true);
-    ajax.send();
-}
-
-dobavi();
-
-
-        </script>
 
 
         <?php
@@ -185,12 +159,12 @@ $telephone = htmlEntities($telephone, ENT_QUOTES);
 		           }
             else if (isset($_POST['loginbutton']) && !empty($_POST['username']) 
                && !empty($_POST['password'])) {
-		$brojac=0;
-            $username= $_POST['username'];
-                
-            $passwordHash = hash('md5',$_POST['password'],false);
-            $redovi=file_get_contents("login.csv"); 
-		
+      		$brojac=0;
+                  $username= $_POST['username'];
+                      
+                  $passwordHash = hash('md5',$_POST['password'],false);
+                  $redovi=file_get_contents("login.csv"); 
+      		
 			
 			
 			     $upit = "SELECT * from korisnik where password='$passwordHash' AND username='$username'";
@@ -222,6 +196,8 @@ $telephone = htmlEntities($telephone, ENT_QUOTES);
 		          
                   $message = 'You have entered valid username and password';
 echo "<script type='text/javascript'>alert('$message');</script>";
+                    
+                    header("Location: index.php");
                   
                }else {
                  $message = 'You have entered invalid username or password';
