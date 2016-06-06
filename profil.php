@@ -10,53 +10,22 @@
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
         <script src="script.js"></script>
-        <script src="provjera.js"></script>
         <title> Health&amp;Spa centar
             <br>Minnie</title>
     </head>
 
     <body>
 
-        <script type="text/javascript">
-
-      function dobavi()
-{
-    var ajax = new XMLHttpRequest();
-
-    ajax.onreadystatechange = function () {
-        if (ajax.readyState == 4 && ajax.status == 200)
-        {
-
-          console.log(ajax.responseText);
-
-            //document.getElementById("brojTelefona").innerHTML = pozivniBrojDrzave + "/";
-        }
-            
-        if (ajax.readyState == 4 && ajax.status == 404)
-            alert("GREŠKA!!! Molimo pokušajte kasnije.");
-            
-    }
-    ajax.open("GET", "restServis.php?username=kerim&brojObavijesti=2", true);
-    ajax.send();
-}
-
-dobavi();
-
-
-        </script>
-
 
         <?php
-    $msg = '';
-      $Err='';
 
       $servername = "localhost";
       $dbname = "eminawt";
       $username = "root";
       $password = "";
       $konekcija = new mysqli($servername, $username, $password,$dbname);
-     
-        $admin=0;
+
+       $admin=0;
         if(isset($_SESSION["username"]))
         {
 
@@ -77,6 +46,59 @@ dobavi();
             }
           }
 
+        if(isset($_GET["idAutora"]))
+        {
+          $idAutora=$_GET["idAutora"];
+
+          $upit="SELECT Ime, Prezime, BrojTelefona from korisnik where id='$idAutora'";
+
+          $rezultat=$konekcija->query($upit);
+
+          if ($rezultat->num_rows > 0) {
+               
+                while($row = $rezultat->fetch_assoc()) {
+
+                  $ime=$row["Ime"];
+                  $prezime=$row["Prezime"];
+                  $BrojTelefon=$row["BrojTelefona"];
+                   
+                } 
+        
+            }
+
+
+        }
+        else
+        {
+          return;
+        }
+    $msg = '';
+      $Err='';
+
+     
+        if(isset($_POST["promjenaPass"])){
+
+
+          $password=$_POST["password"];
+          $passwordPotvrda=$_POST["passwordPotvrda"];
+
+          if($password==$passwordPotvrda){
+
+            $passwordHash= hash('md5',$password,false);
+
+             $sql="UPDATE korisnik
+              SET `Password`= '$passwordHash'
+              WHERE `id` = $idAutora";
+
+        $konekcija->query($sql);
+
+          }
+
+
+
+
+        }
+        
         
         
         
@@ -156,13 +178,9 @@ $telephone = htmlEntities($telephone, ENT_QUOTES);
         
             }
 
-          if(isset($_POST["comments"]))
-            $mogucnostcomments= true;
-          else
-                $mogucnostcomments=false;
 
-          $upit = "INSERT INTO obavijest (Naslov,Tekst,Vrijeme,Autor_id,Slika,Drzava,Telefon,Komentari)
-          VALUES ('$headline', '$content','$date' ,'$Autor_id', '$file_slika','$country','$telephone','$mogucnostcomments')";
+          $upit = "INSERT INTO obavijest (Naslov,Tekst,Vrijeme,Autor_id,Slika,Drzava,Telefon)
+          VALUES ('$headline', '$content','$date' ,'$Autor_id', '$file_slika','$country','$telephone')";
 
 
 
@@ -257,26 +275,20 @@ echo "<script type='text/javascript'>alert('$message');</script>";
                     <li><a class="tekst" href="services.php">Services</a>
                         <li><a class="tekst" href="contact.php">Contact</a>
                             <li><a class="tekst" href="links.php">Links</a>
-                             <?php if(isset($_SESSION["loggedIn"])) {
-                              if($admin==1){
+                               <?php if(isset($_SESSION["loggedIn"])) { 
+
+                                if($admin==1){
                                 print "<li><a class='tekst' href='admin.php'>Admin panel</a>";
                               }
 
-                              ?> <li><form class='logoutforma' method='post' >
+                                ?> <li><form class='logoutforma' method='post' >
        <input type='submit' value='Logout' id='logoutbutton' name='logoutbutton' /></form> <?php } ?>
             </ul>
 
-              <div id="obavijest">
+            <div class="oAutoru">
 
-              </div>
-
-            <div class="cover">
-
-                <div class="center">
-                    <a id="smaller">Health&amp;Spa centar</a>
-                    <br>
-                    <a id="larger"> Minnie</a>
-                </div>
+                <h2>Nalazite se na profilu korisnika sa imenom: <?php echo $ime; echo " "; echo $prezime; ?></h2>
+                <h3>Za detaljnije informacije mozete ga kontaktirati na broj : <?php echo $BrojTelefon; ?></h3>
             </div>
             <?php
         function cmp($a, $b)
@@ -294,8 +306,8 @@ echo "<script type='text/javascript'>alert('$message');</script>";
 
        $niz =  array();
        $nizDesno=  array();
-      $upit = "SELECT Slika,Vrijeme,Naslov,Tekst,id
-              FROM obavijest";
+      $upit = "SELECT Slika,Vrijeme,Naslov,Tekst,id 
+              FROM obavijest where Autor_id='$idAutora'";
 
             $brojac=0;
             $brojac1=0;
@@ -408,74 +420,46 @@ echo "<script type='text/javascript'>alert('$message');</script>";
         ?>
 
                     <div class="addnews">
-                        <?php
-        if(!isset($_SESSION['loggedIn'])){
-            print("
-         <form class='loginforma' method='post'>
-        <p class='username'>
-            <label for'username'>Username:</label>
-            <input name='username' type=text class='username' placeholder='' id='headlinearea' required/>
-        </p>
-          <p class='password'>
-            <label for='password'>Password:</label>
-            <input name='password' type=password class='password' placeholder='' id='headlinearea' required/>
-        </p>
-             <input type='submit' value='Login' id='loginbutton' name='loginbutton' />
-            <br><br>
-        
-    </form>");
-        }
-        else{
-             print("       <p class='headline'>
-                      <form novalidate method='post' enctype='multipart/form-data' action='index.php' onsubmit='return addElement()'>
-                      <label for='headline'>Headline:</label>
-                        <input name='headline' type=text class='news' placeholder='' id='headlinearea'/>
-                    </p>
-                    <p class='image'>
-                        <label for='image'>Image link:
-                            <br>
-                        </label>
-                        <input  type='file' name='slikaFile' id='slikaFile'>
-                       
-                    </p>
-                    <p class='content'>
-                        <label for='content'>Text:
-                            <br>
-                        </label>
-                        <textarea id='contentarea' name='content' rows='4'> </textarea>
-                    </p>
-                    <p class='country'>
-                        <label for='country'>Country:
-                            <br>
-                        </label>
-                          <input name='country' type=text class='country' id='country' onchange='validateAJAX();' />
-                  
-                    </p>
-                    <p class='telephone'>
-                        <label for='telephone'>Telephone:
-                            <br>
-                        </label>
-                          <input name='telephone' type=text class='telephone' id='telephone'  onchange='validateAJAX();'/>
-                  
-                    </p>
+                                         
+        <form <?php echo "action='profil.php?idAutora=".$idAutora."'"; ?> method="post">
+            <input type='submit' name='sortAbutton' value='SORT ALPHABETICALLY' id='sortAbutton'/>
+            <input type='submit' name='sortDbutton' value='SORT BY DATE' id='sortDbutton'/>
 
-                     <p class='telephone'>
-                        <label for='comments'>Comments:
-                            <br>
-                        </label>
-                          <input name='comments' type=checkbox class='telephone' id='telephone'   />
-                  
-                    </p>
-                    <input type='submit'  name='addnewsbutton' value='ADD NEWS' id='addnewsbutton' /> 
-                    <br> <br>
-                    <input type='submit' name='sortAbutton' value='SORT ALPHABETICALLY' id='sortAbutton'/>
-                     <input type='submit' name='sortDbutton' value='SORT BY DATE' id='sortDbutton'/>
+<?php
+
+  $username= $_SESSION["username"];
+  
+  $upit="SELECT id from korisnik where username='$username'";
+
+          $rezultat=$konekcija->query($upit);
+
+            if ($rezultat->num_rows > 0) {
+               
+                while($row = $rezultat->fetch_assoc()) {
+
+                  $logovani=$row["id"];
+                   
+                } 
+        
+            }
+
+            if($logovani==$idAutora)
+            {
+
+ ?>
+        <p class='password'>
+            <label for='password'>Password:</label>
+            <input name='password' type=password class='password' placeholder='' id='headlinearea' />
+        </p>
+        <p class='password'>
+            <label for='password'>Password potvrda:</label>
+            <input name='passwordPotvrda' type=password class='password' placeholder='' id='headlinearea' />
+        </p>
+             <input type='submit' value='Set new' id='loginbutton' name='promjenaPass' />
                     
-                         
-                    </form><br><br>"
-                    );
-        }
-        ?>
+                  <?php  }?>       
+                    
+        </form>
                             <select id="dropdown" onchange="dropdownChanged()">
                                 <option value="sve">Sve novosti</option>
                                 <option value="danasnje">Danasnje novosti</option>

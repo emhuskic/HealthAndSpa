@@ -32,6 +32,28 @@
 	left: -1.5px;
 }
 
+
+#logoutbutton{
+    
+    width: 100%;
+  border: #fbfbfb solid 3px;
+  background-color: gray;
+  color: white;
+  font-size: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+
+#logoutbutton:hover {
+  background-color: rgba(0, 0, 0, 0);
+  
+}
+
 #latica2{
 	width: 12.5px; 
 	height: 12.5px;
