@@ -1,8 +1,13 @@
+<?php
+   ob_start();
+   session_start();
+?>
 <!DOCTYPE html>
 <html>
 
   <head>
     <link rel="stylesheet" href="contactstyle.css">
+    <link rel="stylesheet" href="style.css">
      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat">
       
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -11,6 +16,45 @@
   </head>
 
   <body>
+
+    <?php 
+
+
+      $servername = "localhost";
+      $dbname = "eminawt";
+      $username = "root";
+      $password = "";
+      $konekcija = new mysqli($servername, $username, $password,$dbname);
+
+       $admin=0;
+      if(isset($_POST['logoutbutton'])) {
+                   
+                $_SESSION['loggedIn']=false;
+		         session_unset();
+                header('Location: index.php');
+              
+		           }
+        else if(isset($_SESSION["username"]))
+        {
+
+          $username=$_SESSION["username"];
+
+         $upit="SELECT Admin from korisnik where username='$username'";
+
+          $rezultat=$konekcija->query($upit);
+
+            if ($rezultat->num_rows > 0) {
+               
+                while($row = $rezultat->fetch_assoc()) {
+
+                  $admin=$row["Admin"];
+                   
+                } 
+        
+            }
+          }
+
+    ?>
     <!-- Navigacijski meni -->
       <ul class="navbar">
     <li><a id="cvjetic" href="index.php"><div class="logo">
@@ -29,6 +73,13 @@
     <li><a class="tekst" href="services.php">Services</a>
     <li><a class="tekst" href="contact.php">Contact</a>
     <li><a class="tekst" href="links.php">Links</a>
+      <?php if(isset($_SESSION["loggedIn"])) { 
+        if($admin==1){
+                                print "<li><a class='tekst' href='admin.php'>Admin panel</a>";
+                              }
+
+        ?> <li><form class='logoutforma' method='post' >
+       <input type='submit' value='Logout' id='logoutbutton' name='logoutbutton' /></form> <?php } ?>
   </ul>
   <div id="form-main">
   <div id="form-div">

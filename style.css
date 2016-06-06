@@ -207,6 +207,16 @@ label{
     padding-bottom:0;
     margin-top:10px;
 }
+
+.deleteButtonComment{
+
+  width: 8%;
+  margin-right: 5%;
+  float: right;
+
+}
+
+
 #addnewsbutton{
     
 width: 100%;
@@ -278,6 +288,29 @@ width: 100%;
   font-weight: 700;
 }
 
+#ocistiButton{
+
+   width: 100%;
+  border: #fbfbfb solid 3px;
+  background-color: gray;
+  color: white;
+  font-size: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  margin-top: 5%;
+  font-weight: 700;
+
+
+}
+
+#ocistiButton:hover {
+  background-color: rgba(0, 0, 0, 0);
+  
+}
+
 #loginbutton:hover {
   background-color: rgba(0, 0, 0, 0);
   
@@ -303,6 +336,24 @@ width: 100%;
   background-color: rgba(0, 0, 0, 0);
   
 }
+
+#obavijest{
+ // position: absolute;
+  top:10%;
+  left: 2%;
+  width:20%;
+  color: white;
+}
+
+
+
+.obavijest a {
+
+color: white !important;
+
+
+}
+
 .post>h3 {
   width: 100%;
   color: #6F5A42;
@@ -323,12 +374,116 @@ width: 100%;
   padding: 4px;
   background: #fff;
   left: 0px;
+  height: 150px;
+  width: 180px;
   border: 0.5px;
      -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
        -o-transition: all 1s ease;
       -ms-transition: all 1s ease;
           transition: all 1s ease;
+}
+
+
+.postSlikaDiv {
+
+  display: inline-block;
+  float: left;
+  height: 100%;
+  width:  30%;
+  margin-left: 5%;
+  background-color: red;
+}
+
+.podaci {
+
+  display: inline-block;
+  float: right;
+  height: 100%;
+  width: 40%;
+  margin-right: 5%;
+  background-color: #8F7752;
+  text-align: center;
+
+}
+
+.deleteButton {
+
+  width: 80% !important;
+  margin-left: 10% !important;
+  margin-top: 30% !important;
+}
+
+.omoguciButton{
+
+  width: 20% !important;
+  margin-left: 10% !important;
+}
+
+.unosNovog{
+
+  width: 20%;
+  display: inline-block;
+  float: left;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.listaKorisnika {
+
+  display: inline-block;
+  width: 30%;
+  margin-top: 2%;
+  height: 350px;
+  text-align: left !important;
+  font-size: 15px;
+  color: white;
+}
+
+.dugmadUredjivanja {
+
+  margin-top: 5% !important;
+}
+
+.dugmad {
+
+  display: inline-block;
+  width: 20%;
+  margin-top: 2%;
+}
+
+.sirinaUnosa {
+
+  width: 100% !important;
+}
+
+.textura {
+
+  display: inline-block;
+  height: 100%;
+  width: 20%;
+  background-color: #543322 ;
+  background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.oAutoru{
+
+  width: 100%;
+  height: 100px;
+  text-align: center;
+}
+
+.postObavijesti{
+
+  width: 100%;
+  height: 300px;
+}
+
+.slikaPost {
+
+  height: 100%;
+  width: 100%;
 }
 
 .post:hover img {
@@ -400,6 +555,62 @@ li a.tekst:hover {
   background-color: #4CAF50;
 }
 
+.komentar {
+
+  width: 70%;
+  height: 80px;
+  background-color: #8F7752;;
+  margin-top: 1%;
+  
+
+}
+
+.odgovor{
+
+  width: 60%;
+  height: 80px;
+  background-color: #8F7752;;
+  margin-top: 1%;
+  margin-left: 5%;
+
+
+
+}
+
+.komentarTekst {
+
+  margin-left: 1%;
+}
+
+.postaviKomentar {
+
+ 
+  width: 30%;
+  height:300px;
+  margin-left: 20%;
+
+}
+
+
+
 * {
   box-sizing: border-box;
+}
+
+a{
+
+  text-decoration: none;
+  color: #543322;
+}
+
+.replyTekst {
+
+  float: right;
+}
+
+.formaReply{
+
+  width: 30%;
+  height: 300px;
+  margin-left: 20%;
 }

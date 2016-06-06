@@ -266,22 +266,12 @@ function addElement() {
     var divIdName = 'my' + num + 'Div';
     newdiv.setAttribute('id', divIdName);
     newdiv.setAttribute('class', 'post');
-    var img = document.getElementById('imagearea').value;
-    if (!validate(img)) {
-        console.log('tu');
-        document.getElementById('imagearea').style.backgroundColor = "#EFDBB1";
-        document.getElementById('imagearea').setCustomValidity('Fill this field');
-        return;
-    } else {
-
-        document.getElementById('imagearea').setCustomValidity('');
-        document.getElementById('imagearea').style.backgroundColor = "white";
-    }
+   
     var content = document.getElementById('contentarea').value;
     if (!validateContent()) {
         document.getElementById('contentarea').style.backgroundColor = "#EFDBB1";
         document.getElementById('contentarea').setCustomValidity('Fill this field');
-        return;
+        return false;
     } else {
         document.getElementById('contentarea').style.backgroundColor = "white";
         document.getElementById('contentarea').setCustomValidity('');
@@ -290,7 +280,7 @@ function addElement() {
     if (!validate(headline)) {
         document.getElementById('headlinearea').style.backgroundColor = "#EFDBB1";
         document.getElementById('headlinearea').setCustomValidity('Fill this field');
-        return;
+        return false;
     } else {
 
         document.getElementById('headlinearea').setCustomValidity('');
@@ -303,7 +293,7 @@ function addElement() {
     if (!validate(country)) {
         document.getElementById('country').style.backgroundColor = "#EFDBB1";
         document.getElementById('country').setCustomValidity('Fill this field');
-        return;
+        return false;
     } else {
         document.getElementById('country').style.backgroundColor = "white";
         document.getElementById('country').setCustomValidity('');
@@ -311,12 +301,14 @@ function addElement() {
      if (!validate(tel)) {
         document.getElementById('telephone').style.backgroundColor = "#EFDBB1";
         document.getElementById('telephone').setCustomValidity('Fill this field');
-        return;
+        return false;
     } else {
         document.getElementById('telephone').style.backgroundColor = "white";
         document.getElementById('telephone').setCustomValidity('');
     }
-    var newheadline = document.createElement('h3');
+
+    return true;
+    /*var newheadline = document.createElement('h3');
     newheadline.innerHTML = headline;
     var newcontent = document.createElement('span');
     newcontent.innerHTML = content;
@@ -333,7 +325,7 @@ function addElement() {
     newdiv.appendChild(newcontent);
     var d = new Date();
     newdate.innerHTML = timeSince(d);
-    ni.appendChild(newdiv);
+    ni.appendChild(newdiv);*/
 }
 
 window.onload = function () {
@@ -344,4 +336,13 @@ window.onload = function () {
         pomlabels[i].innerHTML = datelabels[i].innerHTML;
         datelabels[i].innerHTML = timeSince(d);
     }
+}
+
+
+function reply (id) {
+
+
+    var formaDiv = document.getElementById("forma"+id);
+    formaDiv.hidden=false;
+
 }

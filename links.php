@@ -1,3 +1,8 @@
+
+<?php
+   ob_start();
+   session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +16,48 @@
   </head>
 
   <body>
+
+    <?php 
+
+
+      $servername = "localhost";
+      $dbname = "eminawt";
+      $username = "root";
+      $password = "";
+      $konekcija = new mysqli($servername, $username, $password,$dbname);
+
+       $admin=0;
+       if(isset($_POST['logoutbutton'])) {
+                   
+                $_SESSION['loggedIn']=false;
+		         session_unset();
+                header('Location: index.php');
+              
+		           }
+       else if(isset($_SESSION["username"]))
+        {
+
+          $username=$_SESSION["username"];
+
+         $upit="SELECT Admin from korisnik where username='$username'";
+
+          $rezultat=$konekcija->query($upit);
+
+            if ($rezultat->num_rows > 0) {
+               
+                while($row = $rezultat->fetch_assoc()) {
+
+                  $admin=$row["Admin"];
+                   
+                } 
+        
+            }
+          }
+
+
+
+
+    ?>
       <div class="imageblur"> </div>
     <!-- Navigacijski meni -->
        <ul class="navbar">
@@ -30,8 +77,18 @@
     <li><a class="tekst" href="services.php">Services</a>
     <li><a class="tekst" href="contact.php">Contact</a>
     <li><a class="tekst" href="link.php">Links</a>
+      <?php if(isset($_SESSION["loggedIn"])) { 
+        if($admin==1){
+                                print "<li><a class='tekst' href='admin.php'>Admin panel</a>";
+                              }
+
+        ?> <li><form class='logoutforma' method='post' >
+       <input type='submit' value='Logout' id='logoutbutton' name='logoutbutton' /></form> <?php } ?>
   </ul>
-  <ul class="links">
+
+
+
+<ul class="links">
   <li><a href=" http://www.united-chiropractic.org/">United Chiropractic Association</a></li>
   <li><a href="http://www.who.int/en/">World Health Organisation</a></li>
   <li><a href=" http://www.live-well.uk.com/">Live Well</a></li>
