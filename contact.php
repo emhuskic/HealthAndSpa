@@ -27,7 +27,14 @@
       $konekcija = new mysqli($servername, $username, $password,$dbname);
 
        $admin=0;
-        if(isset($_SESSION["username"]))
+      if(isset($_POST['logoutbutton'])) {
+                   
+                $_SESSION['loggedIn']=false;
+		         session_unset();
+                header('Location: index.php');
+              
+		           }
+        else if(isset($_SESSION["username"]))
         {
 
           $username=$_SESSION["username"];
